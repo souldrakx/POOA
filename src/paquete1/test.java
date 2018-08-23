@@ -7,6 +7,11 @@ public class test {
 		System.out.println(Operaciones.mult);
 		System.out.println(Operaciones.suma.getvalor());
 		System.out.println(Operaciones.suma.name());
+		
+		
+		for(Operaciones elemento: Operaciones.values()) {
+			System.out.println(elemento.getvalor());
+		}
 	}
 
 }
