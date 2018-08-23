@@ -11,6 +11,7 @@ public class test {
 		
 		for(Operaciones elemento: Operaciones.values()) {
 			System.out.println(elemento.getvalor());
+			System.out.println(elemento.name());
 		}
 	}
 
