@@ -13,6 +13,8 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.border.TitledBorder;
 
+import Controlador.ControladorBtn;
+import Controlador.ListaControlador;
 import Modelo.Genero;
 import Modelo.Persona;
 
@@ -22,7 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JButton;
 
-public class AgendaGUI extends JFrame {
+public class AgendaGUI extends JFrame implements AgendaInterfaz{
 
 	private JPanel contentPane;
 	private DefaultListModel <Persona> modelo;
@@ -83,6 +85,21 @@ public class AgendaGUI extends JFrame {
 		modelo.addElement(p2);
 		modelo.addElement(p3);
 		
+		listaDatos.addListSelectionListener(new ListaControlador(null));
+		
+		ControladorBtn controlador = new ControladorBtn(this);
+		btnAgregar.setActionCommand("Agregar");
+		btnAgregar.addActionListener(controlador);
+		
+		btnNuevo.setActionCommand("Nuevo");
+		btnNuevo.addActionListener(controlador);
+		
+		btnEditar.setActionCommand("Editar");
+		btnEditar.addActionListener(controlador);
+		
+		btnAEliminar.setActionCommand("Eliminar");
+		btnAEliminar.addActionListener(controlador);
+		
 		JPanel pnlBotones = new JPanel();
 		contentPane.add(pnlBotones, BorderLayout.SOUTH);
 		
@@ -97,6 +114,41 @@ public class AgendaGUI extends JFrame {
 		
 		JButton btnEliminar = new JButton("Eliminar");
 		pnlBotones.add(btnEliminar);
+	}
+
+	@Override
+	public void setPersona(Persona p) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public Persona getPersona() {
+		return personalPanel.getDatos();
+		
+		
+	}
+	
+	public void limpiar() {
+		personaPanel.Limpiar();
+		listaResultadors.clearSelection();
+	}
+
+	@Override
+	public Persona getPersona(Persona p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DefaultListModel<Persona> getModel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void Limpiar() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

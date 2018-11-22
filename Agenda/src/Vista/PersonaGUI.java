@@ -3,6 +3,10 @@ package Vista;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
+
+import Modelo.Genero;
+import Modelo.Persona;
+
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -67,5 +71,28 @@ public class PersonaGUI extends JPanel {
 		JFormattedTextField txtTelefono = new JFormattedTextField(formatoTelefono);
 		add(txtTelefono);
 		}
+	
+	public void setPersona(Persona p) {
+		txtNombre.setText(p.getNombre());
+		//txtTelefono.setText(p.getTelefono());
+	}
+	
+	public Persona getDatos() {
+		String nombre = txtNombre.getText();
+		String telefono = txtTelefono.getText();
+		int edad = Integer.parseInt(txt.Edad.getText());
+		String correo=txtCorreo.getText();
+		Genero g = (rdbtnMasculino.isSelect())?Genero.MASCULINO:Genero.FEMENINO;
+		return new Persona(nombre, edad, telefono, correo, 0);
+	}
+	
+	public void Limpiar() {
+		txtNombre.setText(" ");
+		txtTelefono.setText(" ");
+		txtEdad.setText(" ");
+		txtCorreo.setText(" ");
+		rdbtnFemenino.setSelected(false);
+		rdbtnFemenino.setSelected(false);
+	}
 
 }
